@@ -1,0 +1,41 @@
+### Verificar se a API está funcionando
+GET http://localhost:3000/
+
+### Listar salas (público)
+GET http://localhost:3000/api/rooms?page=1&size=10
+
+### Login do administrador (dados padrão do .env.example)
+POST http://localhost:3000/api/login
+Content-Type: application/json
+
+{
+  "email": "admin@salas.com",
+  "password": "Admin123!"
+}
+
+### Criar sala (substitua COLE_SEU_TOKEN pelo token recebido no login)
+POST http://localhost:3000/api/rooms
+Content-Type: application/json
+Authorization: Bearer COLE_SEU_TOKEN
+
+{
+  "name": "Sala de Reunião",
+  "capacity": 15,
+  "location": "Bloco C"
+}
+
+### Consultar sala pelo ID
+GET http://localhost:3000/api/rooms/1
+
+### Atualizar sala (administrador)
+PUT http://localhost:3000/api/rooms/1
+Content-Type: application/json
+Authorization: Bearer COLE_SEU_TOKEN
+
+{
+  "capacity": 25
+}
+
+### Excluir sala (administrador)
+DELETE http://localhost:3000/api/rooms/1
+Authorization: Bearer COLE_SEU_TOKEN
